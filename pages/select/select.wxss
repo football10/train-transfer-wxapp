@@ -72,10 +72,12 @@ border-bottom: 4rpx solid #36b9af;
 }
 .select_heard1{
   padding-top: 130rpx;
+  padding-bottom: 20rpx;
 }
 
 .select_heard2{
   padding-top: 220rpx;
+  padding-bottom: 20rpx;
 }
 
 .round-click{

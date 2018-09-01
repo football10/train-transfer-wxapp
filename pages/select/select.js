@@ -7,8 +7,20 @@ Page({
     displFlg: false,
     select: '',
     startEndTrainFlg: true,
-    result:false,
-    testData: [],
+    getStationForNameResult: false,
+    //getStationForOtherResult: false,
+    //stationList: [],
+    getStationForOtherResult: true,
+    stationList: [{
+      stationNameCN: '函館',
+      stationNameJP: '函館JP',
+      stationNameRoman: 'hakodate',
+    },
+    {
+      stationNameCN: '五稜郭',
+      stationNameJP: '五稜郭JP',
+      stationNameRoman: 'goryoukaku'
+    }],
     placeholder: '请输入目的地',
     eventKbn: ['中文查询', '日文查询'],
     eventKbn_index: 0,
@@ -338,11 +350,11 @@ Page({
             self.setData({
               testData: response.data.result.stationList,
               displFlg: true,
-              result:true
+              getStationForNameResult: true
             });
           } else {
             self.setData({
-              result: false,
+              getStationForNameResult: false,
               displFlg: true,
             });
           }
@@ -372,24 +384,74 @@ Page({
         select: 'shoucang',
       })
     }
-    that.getList();
+    that.getStationListForOther();
   },
-  //获取列表
-  getList() {
-    const that = this;
-    if (that.data.select == 'fujin') {
-      that.setData({
-        testData1: that.data.fujin
-      })
-    } else if (that.data.select == 'zuijin') {
-      that.setData({
-        testData1: that.data.zuijin
-      })
-    } else if (that.data.select == 'shoucang') {
-      that.setData({
-        testData1: that.data.shoucang
-      })
-    }
+
+//获取站点列表(附近/最近查询/收藏)
+  getStationListForOther() {
+   const self = this;
+   var url = null;
+   var data = null;
+
+   if (self.data.select == 'fujin') {
+     url = api.getSelectHistory();
+     data = {
+       "requestInfo": {
+         "openid": app.globalData.openid
+       }
+     };
+   } else if (self.data.select == 'zuijin') {
+     url = api.getSelectHistory();
+     data = {
+       "requestInfo": {
+         "openid": app.globalData.openid
+       }
+     };
+   } else if (self.data.select == 'shoucang') {
+     url = api.getSelectHistory();
+     data = {
+       "requestInfo": {
+         "openid": app.globalData.openid
+       }
+     };
+   }
+   
+   wxRequest
+     .postRequest(url, data)
+     .then(response => {
+       if ("OK" == response.data.responseCode) {
+         if (response.data.result.stationCount != 0) {
+           self.setData({
+             stationList: response.data.result.stationList,
+             getStationForOtherResult: true,
+             displFlg: ture
+           });
+         } else {
+           self.setData({
+             getStationForOtherResult: true,
+             stationList: [{
+               stationGroupCode: "1234567",
+               stationNameCN: '函館',
+               stationNameJP: '函館',
+               stationNameRoman: 'hakodate',
+             }],
+             displFlg: ture
+           });
+         }
+       } else {
+         // Request NG
+         self.setData({
+           getStationForOtherResult: true,
+           stationList: [{
+             stationGroupCode: "1234567",
+             stationNameCN: 'リクエストエラー',
+             stationNameJP: 'リクエストエラー',
+             stationNameRoman: 'requestError',
+           }],
+           displFlg: ture
+         });
+       }
+     })
   },
 
   //返回选中的站
@@ -412,4 +474,10 @@ Page({
       eventKbn_index: e.detail.value
     });
   }, 
+
+  showDelete: function (e) {
+    console.log("======showDelete Event======");
+    console.log(e);
+  }
 })
+

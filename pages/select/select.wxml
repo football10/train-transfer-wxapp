@@ -9,7 +9,7 @@
         </picker>
       </view> -->
     </view>
-    <view class='btns' style="{{!displFlg ? 'clear:both': 'display: none'}}">
+    <view class='btns' style="{{displFlg ? 'display: none' : 'clear:both'}}">
       <view class="nav_btn {{select == 'fujin' ? 'selected' : ''}}" bindtap="navbtn" data-id='1'>
         附近站点
       </view>
@@ -20,7 +20,7 @@
     </view>
   </view>
   <view class='select_heard1' style="{{displFlg ? 'clear:both': 'display: none'}} ">
-    <view wx:if="{{result}}">
+    <view wx:if="{{getStationForNameResult}}">
       <block wx:for="{{testData}}">
         <view class='select_body' bindtap='returnItemValue' data-id="{{item.stationNameJP}}">
           <view class='en'>{{item.stationNameJP}} </view>
@@ -28,17 +28,23 @@
         </view>
       </block>
     </view>
-    <view wx:else>
-      无数据
+    <view wx:else style="margin:20rpx">
+      还没有查询到站点信息...
     </view>
   </view>
+  <!--附近/最近查询/收藏站点的LIST-->
   <view class='select_heard2' style="{{displFlg ? 'display: none': 'clear:both'}}">
-    <block wx:for="{{testData1}}">
-      <view class='select_body' bindtap='returnItemValue' data-id="{{item.name}}">
-        <view class='en'>{{item.en}} </view>
-        <view class='name'>{{item.name}}</view>
-      </view>
-    </block>
+    <view wx:if="{{getStationForOtherResult}}">
+      <block wx:for="{{stationList}}">
+        <view class='select_body' bindtouchmove='showDelete' bindtap='returnItemValue' data-id="{{item.stationNameCN}}">
+          <view class='en'>{{item.stationNameRoman}}</view>
+          <view class='name'>{{item.stationNameCN}}</view>
+        </view>
+      </block>
+    </view>
+    <view wx:else style="margin:20rpx">
+      没有可以显示的站点信息...
+    </view>
   </view>
 </view>
 <view class="round-click">

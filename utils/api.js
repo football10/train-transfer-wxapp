@@ -211,6 +211,7 @@ export default {
   postSignUpUrl() {
     return HOST_FOOTBALL_URI + "event/proposerEvent";
   },
+
   //获取检索结果
   getStationNameList() {
     return HOST_TRAIN_TRANSFER_URI + 'data/getStationNameList';
@@ -219,5 +220,10 @@ export default {
   //获取用户openid
   getOpenidUrl(code) {
     return HOST_TRAIN_TRANSFER_URI + 'common/getOpenId?code=' + code;
+  },
+
+  //取得最新查询
+  getSelectHistory() {
+    return HOST_TRAIN_TRANSFER_URI + 'data/getSelectHistory';
   },
 };
