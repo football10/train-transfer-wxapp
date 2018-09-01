@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/all/all",
+    "pages/select/select",
+    "pages/results/results",
+    "pages/result_det/result_det",
+    "pages/train_info/train_info"
+  ],
+  "window": {
+    "navigationBarTextStyle": "#fff",
+    "navigationBarTitleText": "东京地铁",
+    "navigationBarBackgroundColor": "#5dc890",
+    "backgroundColor": "#fbf9fe",
+    "enablePullDownRefresh": false
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  }
+}

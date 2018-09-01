@@ -1,0 +1,40 @@
+<view class="container bg">
+  <view sub_container="">
+    <view class="textTrain">
+      <view class='lible'>起点</view>
+      <view class='text-input'>
+        <input bindfocus="startTrain" class="textTrain-input" type="text" value="" placeholder="出发地" value="{{startTrain}}" autofocus name="theme">
+        </input>
+      </view>
+    </view>
+    <view class='bianhuan'>
+      <image class="img_bianhuan" src="/image/bianhuan.png" bindtap='convertTrain'></image>
+    </view>
+    <view class="textTrain">
+      <view class='lible'>终点</view>
+      <view class='text-input'>
+        <input bindfocus="endTrain" class="textTrain-input" type="text" value="" placeholder="目的地" value="{{endTrain}}" autofocus name="theme">
+        </input>
+      </view>
+    </view>
+    <view class='section'>
+      <button class="" type="primary" bindtap="join">查询</button>
+    </view>
+    <view class='section'>
+      <view class='kuaijie'>
+        <view class='kuaijie_item'>
+          <image class="img_kuaijie" src="/image/fujinzhandian.png"></image>
+          附近站点
+        </view>
+        <view class='kuaijie_item'>
+          <image class="img_kuaijie" src="/image/xianluchaxun.png"></image>
+          线路查询
+        </view>
+        <view class='kuaijie_item' bindtap='share'>
+          <image class="img_kuaijie" src="/image/share.png"></image>
+          分享给好友
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

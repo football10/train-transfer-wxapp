@@ -1,0 +1,21 @@
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <map id="myMap" style="width: 100%; height: 200px;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" covers="{{covers}}" show-location bindtap='openLocation'></map>
+  </view>
+  <view class="info-area-name">
+    <view class='info-area-txt'>新宿（東京メトロ）</view>
+  </view>
+</view>
+
+<view class="round-click">
+  <image class="round-click-img" src="/image/shoucang2.png"></image>
+</view>
+<view class="round-click2">
+  <image class="round-click-img" src="/image/you3.png"></image>
+</view>
+<view class="round-click3">
+  <text class='round-click-txt'>去这里</text>
+</view>
+<view class="round-click4">
+  <text class='round-click-txt'>收藏</text>
+</view>

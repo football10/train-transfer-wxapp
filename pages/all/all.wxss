@@ -1,0 +1,65 @@
+.textTrain {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.lible {
+  background: #5dc890;
+  height: 50px;
+  width: 80px;
+  font-size: 15pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.text-input {
+  float: none;
+  background: white;
+  width: 100%;
+  height: 50px;
+  font-size: 15pt;
+}
+
+.textTrain-input {
+  margin-left: 10px;
+  width: 100%;
+  height: 50px;
+}
+
+.selectBtn {
+  padding-top: 20px;
+  width: 100%;
+}
+
+.bianhuan {
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.img_bianhuan {
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.img_kuaijie {
+  height: 70rpx;
+  width: 70rpx;
+}
+
+.kuaijie {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.kuaijie_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

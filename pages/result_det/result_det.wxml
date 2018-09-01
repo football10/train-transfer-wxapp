@@ -1,0 +1,56 @@
+<view class='resultDet'>
+  <view class='resultDet_info'>
+    起点：大沼公園
+  </view>
+</view>
+<view class='tran_det'>
+  <view class='tran_icon'>
+    <image class="img_jiantou" src="{{show_tran1 ? '/image/shang.png': '/image/xia.png'}}"></image>
+    <view class='tran_count' bindtap='show_tran1'>3站</view>
+    <image class="img_jiantou" src="{{show_tran1 ? '/image/xia.png': '/image/shang.png'}}"></image>
+  </view>
+  <view class='tran_xianlu'>
+    <image class="img_you" src="/image/z.png"></image>半蔵門線
+  </view>
+</view>
+<view class='tran_det2' style="{{show_tran1 ? 'display: none': ''}}">
+  <navigator url='../train_info/train_info' class='tran_name'>
+    <image class="img_tran" src="/image/mark_maru.png"></image>
+    東大島</navigator>
+  <navigator url='../train_info/train_info' class='tran_name'>
+    <image class="img_tran" src="/image/mark_maru.png"></image>
+    大島</navigator>
+</view>
+<view class='resultDet'>
+  <view class='resultDet_info'>
+    换乘：住吉
+  </view>
+</view>
+<view class='tran_det'>
+  <view class='tran_icon'>
+    <image class="img_jiantou" src="{{show_tran2 ? '/image/shang.png': '/image/xia.png'}}"></image>
+    <view class='tran_count' bindtap='show_tran2'>5站</view>
+    <image class="img_jiantou" src="{{show_tran2 ? '/image/xia.png': '/image/shang.png'}}"></image>
+  </view>
+  <view class='tran_xianlu'>
+    <image class="img_you" src="/image/y.png"></image>都営新宿線線
+  </view>
+</view>
+<view class='tran_det2' style="{{show_tran2 ? 'display: none': ''}}">
+  <navigator url='../train_info/train_info' class='tran_name'>
+    <image class="img_tran" src="/image/mark_maru.png"></image>菊川</navigator>
+  <navigator url='../train_info/train_info' class='tran_name'>
+    <image class="img_tran" src="/image/mark_maru.png"></image>森下</navigator>
+  <navigator url='../train_info/train_info' class='tran_name'>
+    <image class="img_tran" src="/image/mark_maru.png"></image>浜町</navigator>
+  <navigator url='../train_info/train_info' class='tran_name'>
+    <image class="img_tran" src="/image/mark_maru.png"></image>馬喰横山</navigator>
+</view>
+<view class='resultDet'>
+  <view class='resultDet_info'>
+    终点：銚子口
+  </view>
+</view>
+<view class='section'>
+  <button class="" type="primary" open-type="share"> 转发</button>
+</view>

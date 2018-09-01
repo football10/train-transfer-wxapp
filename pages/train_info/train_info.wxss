@@ -1,0 +1,64 @@
+.page-section-gap {
+}
+
+.page-body-button {
+  margin-bottom: 30rpx;
+}
+
+.info-area-name {
+  background-color: whitesmoke;
+}
+
+.info-area-txt {
+  display: flex;
+  align-items: Center;
+  margin-left: 20rpx;
+  height: 80rpx;
+}
+.round-click{
+    border-radius: 100%;
+    position: fixed;
+    bottom: 70rpx;
+    right: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+    box-shadow: 1px 1px 8px #888888;
+}
+.round-click2{
+    border-radius: 100%;
+    position: fixed;
+    bottom: 200rpx;
+    right: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+    box-shadow: 1px 1px 8px #888888;
+}
+.round-click3{
+    position: fixed;
+    bottom: 170rpx;
+    right: 38rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+.round-click4{
+    position: fixed;
+    bottom: 40rpx;
+    right: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+.round-click-txt{
+   font-size: 20rpx;
+}
+.round-click-img{
+  height: 80rpx;
+  width: 80rpx;
+}

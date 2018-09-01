@@ -1,0 +1,75 @@
+.result_info {
+  height: 90rpx;
+  background-color: beige;
+  border-bottom: 4rpx solid lemonchiffon;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.info{
+  margin-left:20rpx;
+}
+
+.img_you2 {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.result {
+  background: white;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 4rpx solid gainsboro;
+}
+
+.result .result_No {
+  text-align: center;
+  height: 100rpx;
+  width: 80rpx;
+  font-size: 80rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+    margin-bottom: 10rpx;
+}
+
+.result .result_right {
+  margin-left: 20rpx;
+  font-size: 60rpx;
+  color: cornflowerblue;
+}
+
+.result .result_Det {
+  font-size: 30rpx;
+  width: 550rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-shrink: 1;
+  margin-bottom: 10rpx;
+}
+
+.result .img_bianhuan {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.img_you {
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.xian {
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  height: 1px;
+  border: none;
+  border-top: 1px dotted darkgrey;
+  width: 30rpx;
+}

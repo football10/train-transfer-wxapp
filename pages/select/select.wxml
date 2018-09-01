@@ -1,0 +1,46 @@
+<view class="select_body">
+  <view style="position:fixed; top:0;width: 100%;">
+    <view class='selectBox'>
+      <image class="select_icon" src="/image/select.png"></image>
+      <input type='text' class='selectBox_txt' bindinput='selectEvent' placeholder="{{placeholder}}"></input>
+      <!-- <view class="select_picker">
+        <picker mode="selector" range="{{eventKbn}}" value="{{eventKbn_index}}" bindchange="listenerPickerSelected">
+          <text>{{eventKbn[eventKbn_index]}}</text>
+        </picker>
+      </view> -->
+    </view>
+    <view class='btns' style="{{!displFlg ? 'clear:both': 'display: none'}}">
+      <view class="nav_btn {{select == 'fujin' ? 'selected' : ''}}" bindtap="navbtn" data-id='1'>
+        附近站点
+      </view>
+      <view class="nav_btn {{select == 'zuijin' ? 'selected' : ''}}" bindtap="navbtn" data-id='2'>最近查询
+      </view>
+      <view class="nav_btn {{select == 'shoucang' ? 'selected' : ''}}" bindtap="navbtn" data-id='3'>收藏站点
+      </view>
+    </view>
+  </view>
+  <view class='select_heard1' style="{{displFlg ? 'clear:both': 'display: none'}} ">
+    <view wx:if="{{result}}">
+      <block wx:for="{{testData}}">
+        <view class='select_body' bindtap='returnItemValue' data-id="{{item.stationNameJP}}">
+          <view class='en'>{{item.stationNameJP}} </view>
+          <view class='name'>{{item.stationNameJP}}</view>
+        </view>
+      </block>
+    </view>
+    <view wx:else>
+      无数据
+    </view>
+  </view>
+  <view class='select_heard2' style="{{displFlg ? 'display: none': 'clear:both'}}">
+    <block wx:for="{{testData1}}">
+      <view class='select_body' bindtap='returnItemValue' data-id="{{item.name}}">
+        <view class='en'>{{item.en}} </view>
+        <view class='name'>{{item.name}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="round-click">
+<navigator url='../all/all' redirect="true" >返回首页</navigator >
+</view>

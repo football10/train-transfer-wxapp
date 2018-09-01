@@ -1,0 +1,72 @@
+.resultDet {
+  height: 80rpx;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.resultDet_info {
+  margin-left: 30rpx;
+}
+
+.tran_det {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.tran_det2 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 130rpx;
+  margin-bottom: 20rpx;
+  border-left: 15rpx solid lightgreen;
+}
+
+.tran_name {
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+  color:  dodgerblue;
+}
+
+.img_tran{
+width: 25rpx;
+height: 25rpx;
+position:absolute;
+left:127rpx;
+}
+
+.img_you {
+  height: 30rpx;
+  width: 30rpx;
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+}
+
+.img_jiantou {
+  height: 30rpx;
+  width: 30rpx;
+  margin-left: 50rpx;
+}
+
+.tran_count {
+  margin-left: 30rpx;
+  width: 100rpx;
+}
+
+.tran_xianlu {
+  border-left: 15rpx solid lightgreen;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.tran_icon{
+  display: flex;
+  flex-direction: column;
+  width: 130rpx;
+}

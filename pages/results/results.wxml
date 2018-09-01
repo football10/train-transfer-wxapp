@@ -1,0 +1,78 @@
+<view class='result_info'>
+  <view class='info'>
+    大沼公園
+  </view>
+  <image class="img_you2" src="/image/you2.png"></image>
+  <view class='info2'>
+    銚子口
+  </view>
+</view>
+<view class='results'>
+  <view class='result' bindtap='join'>
+    <view class='result_No'>1</view>
+    <view class='result_Det'>起点
+      <view class='xian' />
+      <image class="img_bianhuan" src="/image/y.png" bindtap='convertTrain'></image>
+      <view class='xian' /> 终点
+    </view>
+    <view class='result_right'>
+      <image class="img_you" src="/image/you.png"></image>
+    </view>
+  </view>
+  <view class='result' bindtap='join'>
+    <view class='result_No'>2</view>
+    <view class='result_Det'>起点
+      <view class='xian' />
+      <image class="img_bianhuan" src="/image/z.png" bindtap='convertTrain'></image>
+      <view class='xian' />五稜郭
+       <view class='xian' />
+      <image class="img_bianhuan" src="/image/y.png" bindtap='convertTrain'></image>
+      <view class='xian' /> 终点
+    </view>
+    <view class='result_right' >
+      <image class="img_you" src="/image/you.png"></image>
+    </view>
+  </view>
+    <view class='result' bindtap='join'>
+    <view class='result_No'>3</view>
+    <view class='result_Det'>起点
+      <view class='xian' />
+      <image class="img_bianhuan" src="/image/i.png" bindtap='convertTrain'></image>
+      <view class='xian' />
+            駒ケ岳
+      <view class='xian' />
+      <image class="img_bianhuan" src="/image/y.png" bindtap='convertTrain'></image>
+      <view class='xian' />
+      五稜郭
+       <view class='xian' />
+      <image class="img_bianhuan" src="/image/f.png" bindtap='convertTrain'></image>
+      <view class='xian' /> 终点
+    </view>
+    <view class='result_right'>
+      <image class="img_you" src="/image/you.png"></image>
+    </view>
+  </view>
+  <view class='result'bindtap='join'>
+    <view class='result_No'>4</view>
+    <view class='result_Det'>起点
+      <view class='xian' />
+      <image class="img_bianhuan" src="/image/c.png" bindtap='convertTrain'></image>
+      <view class='xian' />
+      大中山
+      <view class='xian' />
+      <image class="img_bianhuan" src="/image/i.png" bindtap='convertTrain'></image>
+      <view class='xian' />
+      新函館北斗
+      <view class='xian' />
+      <image class="img_bianhuan" src="/image/f.png" bindtap='convertTrain'></image>
+      <view class='xian' />
+      駒ケ岳
+      <view class='xian' />
+      <image class="img_bianhuan" src="/image/y.png" bindtap='convertTrain'></image>
+      <view class='xian' /> 终点
+    </view>
+    <view class='result_right'>
+      <image class="img_you" src="/image/you.png"></image>
+    </view>
+  </view>
+</view>
