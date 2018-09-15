@@ -55,27 +55,39 @@ border-bottom: 4rpx solid #36b9af;
 }
 
 .select_body{
+ width: 100%;
  padding-left: 20rpx;
  padding-right: 20rpx;
  margin-bottom: 10rpx;
  border-bottom: 1rpx solid  gainsboro;
-
+ display: flex;
+ flex-direction: row;
+ align-items:flex-end;
 }
+
+.select_body .leftItem{
+  width: 40%;
+}
+
 .select_body .en{
   font-size: 30rpx;
-   margin-top: 20rpx;
-   color: darkgray;
+  margin-top: 20rpx;
+  color: darkgray;
 }
-.select_body .name{
+.select_body .jpname{
   margin-bottom: 20rpx;
-
+}
+.select_body .cnname{
+  margin-bottom: 20rpx;
 }
 .select_heard1{
+  width: 90%;
   padding-top: 130rpx;
   padding-bottom: 20rpx;
 }
 
 .select_heard2{
+  width: 90%;
   padding-top: 220rpx;
   padding-bottom: 20rpx;
 }

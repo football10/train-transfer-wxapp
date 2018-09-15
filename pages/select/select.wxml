@@ -10,21 +10,26 @@
       </view> -->
     </view>
     <view class='btns' style="{{displFlg ? 'display: none' : 'clear:both'}}">
-      <view class="nav_btn {{select == 'fujin' ? 'selected' : ''}}" bindtap="navbtn" data-id='1'>
-        附近站点
+      <view class="nav_btn {{select == 'zuijin' ? 'selected' : ''}}" bindtap="navbtn" data-id='1'>最近查询
       </view>
-      <view class="nav_btn {{select == 'zuijin' ? 'selected' : ''}}" bindtap="navbtn" data-id='2'>最近查询
+      <view class="nav_btn {{select == 'shoucang' ? 'selected' : ''}}" bindtap="navbtn" data-id='2'>收藏站点
       </view>
-      <view class="nav_btn {{select == 'shoucang' ? 'selected' : ''}}" bindtap="navbtn" data-id='3'>收藏站点
+      <view class="nav_btn {{select == 'fujin' ? 'selected' : ''}}" bindtap="navbtn" data-id='3'>附近站点
       </view>
     </view>
   </view>
+  <!--站名查詢站点的LIST-->
   <view class='select_heard1' style="{{displFlg ? 'clear:both': 'display: none'}} ">
     <view wx:if="{{getStationForNameResult}}">
-      <block wx:for="{{testData}}">
-        <view class='select_body' bindtap='returnItemValue' data-id="{{item.stationNameJP}}">
-          <view class='en'>{{item.stationNameJP}} </view>
-          <view class='name'>{{item.stationNameJP}}</view>
+      <block wx:for="{{stationListForSelectName}}">
+        <view class='select_body' bindtap='returnItemValue' data-id="{{item.stationNameCN}}">
+          <view class='leftItem'>
+            <view class='en'>{{item.stationNameRoman}}</view>
+            <view class='jpname'>{{item.stationNameJP}}</view>
+          </view>
+          <view class='rightItem'>
+            <view class='cnname'>{{item.stationNameCN}}</view>
+          </view>
         </view>
       </block>
     </view>
@@ -36,9 +41,14 @@
   <view class='select_heard2' style="{{displFlg ? 'display: none': 'clear:both'}}">
     <view wx:if="{{getStationForOtherResult}}">
       <block wx:for="{{stationList}}">
-        <view class='select_body' bindtouchmove='showDelete' bindtap='returnItemValue' data-id="{{item.stationNameCN}}">
-          <view class='en'>{{item.stationNameRoman}}</view>
-          <view class='name'>{{item.stationNameCN}}</view>
+        <view style="{{item.txtStyle}}" class='select_body' bindtap='returnItemValue' data-id="{{item.stationNameCN}}">
+          <view class='leftItem'>
+            <view class='en'>{{item.stationNameRoman}}</view>
+            <view class='jpname'>{{item.stationNameJP}}</view>
+          </view>
+          <view class='rightItem'>
+            <view class='cnname'>{{item.stationNameCN}}</view>
+          </view>
         </view>
       </block>
     </view>
