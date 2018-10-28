@@ -22,13 +22,16 @@
   <view class='select_heard1' style="{{displFlg ? 'clear:both': 'display: none'}} ">
     <view wx:if="{{getStationForNameResult}}">
       <block wx:for="{{stationListForSelectName}}">
-        <view class='select_body' bindtap='returnItemValue' data-id="{{item.stationNameCN}}">
+        <view class='select_body' bindtap='returnItemValue' data-code="{{item.stationGroupCode}}" data-en="{{item.stationNameRoman}}" data-cn="{{item.stationNameCN}}" data-jp="{{item.stationNameJP}}">
           <view class='leftItem'>
             <view class='en'>{{item.stationNameRoman}}</view>
             <view class='jpname'>{{item.stationNameJP}}</view>
           </view>
-          <view class='rightItem'>
+          <view>
             <view class='cnname'>{{item.stationNameCN}}</view>
+          </view>
+          <view>
+            <view class='cnname'>{{item.stationGroupCode}}</view>
           </view>
         </view>
       </block>
@@ -41,13 +44,16 @@
   <view class='select_heard2' style="{{displFlg ? 'display: none': 'clear:both'}}">
     <view wx:if="{{getStationForOtherResult}}">
       <block wx:for="{{stationList}}">
-        <view style="{{item.txtStyle}}" class='select_body' bindtap='returnItemValue' data-id="{{item.stationNameCN}}">
+        <view style="{{item.txtStyle}}" class='select_body' bindtap='returnItemValue' data-code="{{item.stationGroupCode}}" data-en="{{item.stationNameRoman}}" data-cn="{{item.stationNameCN}}" data-jp="{{item.stationNameJP}}">
           <view class='leftItem'>
             <view class='en'>{{item.stationNameRoman}}</view>
             <view class='jpname'>{{item.stationNameJP}}</view>
           </view>
-          <view class='rightItem'>
+          <view>
             <view class='cnname'>{{item.stationNameCN}}</view>
+          </view>
+          <view>
+            <view class='cnname'>{{item.stationGroupCode}}</view>
           </view>
         </view>
       </block>

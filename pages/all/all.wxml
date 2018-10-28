@@ -3,7 +3,7 @@
     <view class="textTrain">
       <view class='lible'>起点</view>
       <view class='text-input'>
-        <input bindfocus="startTrain" class="textTrain-input" type="text" value="" placeholder="出发地" value="{{startTrain}}" autofocus name="theme">
+        <input bindfocus="startTrain" class="textTrain-input" type="text" placeholder="出发地" value="{{startTrainCn}}" autofocus name="theme">
         </input>
       </view>
     </view>
@@ -13,7 +13,7 @@
     <view class="textTrain">
       <view class='lible'>终点</view>
       <view class='text-input'>
-        <input bindfocus="endTrain" class="textTrain-input" type="text" value="" placeholder="目的地" value="{{endTrain}}" autofocus name="theme">
+        <input bindfocus="endTrain" class="textTrain-input" type="text" placeholder="目的地" value="{{endTrainCn}}" autofocus name="theme">
         </input>
       </view>
     </view>

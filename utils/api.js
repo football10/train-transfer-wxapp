@@ -226,4 +226,9 @@ export default {
   getSelectHistory() {
     return HOST_TRAIN_TRANSFER_URI + 'data/getSelectHistory';
   },
+
+  //登入最新查询
+  getRegSelectHistory() {
+    return HOST_TRAIN_TRANSFER_URI + 'data/regSelectHistory';
+  },
 };

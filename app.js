@@ -17,8 +17,14 @@ App({
     userInfo:null,
     openid: null,
     debug: false,
-    startTrain:'',
-    endTrain:''
+    startTrainCode:'',
+    startTrainEn:'',
+    startTrainCn:'',
+    startTrainJp:'',
+    endTrainCode:'',
+    endTrainEn:'',
+    endTrainCn:'',
+    endTrainJp:''
   },
   
   /*获取用户ID*/

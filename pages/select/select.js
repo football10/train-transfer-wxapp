@@ -170,11 +170,19 @@ Page({
 
   //返回选中的站
   returnItemValue: function(e) {
+
+    console.log(e);
     const that = this;
     if (that.data.startEndTrainFlg) {
-      getApp().globalData.startTrain = e.currentTarget.dataset.id;
+      getApp().globalData.startTrainCode = e.currentTarget.dataset.code;
+      getApp().globalData.startTrainEn = e.currentTarget.dataset.en;
+      getApp().globalData.startTrainCn = e.currentTarget.dataset.cn;
+      getApp().globalData.startTrainJp = e.currentTarget.dataset.jp;
     } else {
-      getApp().globalData.endTrain = e.currentTarget.dataset.id;
+      getApp().globalData.endTrainCode = e.currentTarget.dataset.code;
+      getApp().globalData.endTrainEn = e.currentTarget.dataset.en;
+      getApp().globalData.endTrainCn = e.currentTarget.dataset.cn;
+      getApp().globalData.endTrainJp = e.currentTarget.dataset.jp;
     }
     wx.redirectTo({
       url: '/pages/all/all'
