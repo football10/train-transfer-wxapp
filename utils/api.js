@@ -231,4 +231,9 @@ export default {
   getRegSelectHistory() {
     return HOST_TRAIN_TRANSFER_URI + 'data/regSelectHistory';
   },
+
+  //取得附近站点
+  getNearbyStation() {
+    return HOST_TRAIN_TRANSFER_URI + 'data/getNearbyStation';
+  },
 };

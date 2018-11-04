@@ -26,7 +26,10 @@ Page({
     // TODO END
     placeholder: '请输入目的地',
     eventKbn: ['中文查询', '日文查询'],
-    eventKbn_index: 0
+    eventKbn_index: 0,
+    hasLocation:false,
+    longitude:'',
+    latitude:''
   },
   onLoad: function(option) {
     console.log("onload" + option.placeholder);
@@ -118,12 +121,19 @@ Page({
    var data = null;
 
    if (self.data.select == 'fujin') {
-     url = api.getSelectHistory();
-     data = {
-       "requestInfo": {
-         "openid": app.globalData.openid
+
+     wx.getLocation({
+       success: function (res) {
+         console.log(res)
+         data = {
+           "requestInfo": {
+             "lon": res.longitude,
+             "lat": res.latitude
+           }
+         }
        }
-     };
+     }),
+     url = api.getNearbyStation();
    } else if (self.data.select == 'zuijin') {
      url = api.getSelectHistory();
      data = {
@@ -266,8 +276,21 @@ Page({
         stationList: list
       });
     }
-  }
+  },
   //左滑刪除操作END
 
+//取得当前经纬度
+  getLocation: function () {
+    var that = this
+    wx.getLocation({
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          hasLocation: true,
+          location: formatLocation(res.longitude, res.latitude)
+        })
+      }
+    })
+  },
 })
 
