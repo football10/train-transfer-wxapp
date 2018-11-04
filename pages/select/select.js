@@ -11,25 +11,12 @@ Page({
     stationListForSelectName: [],
     getStationForOtherResult: false,
     stationList: [],
-    // TODO START
-     //getStationForOtherResult: true,
-     //stationList: [{
-      // stationNameCN: '函館',
-       //stationNameJP: '函館JP',
-       //stationNameRoman: 'hakodate',
-     //},
-     //{
-       //stationNameCN: '五稜郭',
-       //stationNameJP: '五稜郭JP',
-       //stationNameRoman: 'goryoukaku'
-     //}],
-    // TODO END
     placeholder: '请输入目的地',
     eventKbn: ['中文查询', '日文查询'],
     eventKbn_index: 0,
-    hasLocation:false,
-    longitude:'',
-    latitude:''
+    hasLocation: false,
+    longitude: 0.0,
+    latitude: 0.0
   },
   onLoad: function(option) {
     console.log("onload" + option.placeholder);
@@ -91,7 +78,6 @@ Page({
           });
         }
       })
-
   },
 
   //切换导航按钮
@@ -102,16 +88,19 @@ Page({
       that.setData({
         select: 'zuijin',
       });
+      that.getStationListForOther();
     } else if (index == '2') {
       that.setData({
         select: 'shoucang',
-      })
+      });
+      that.getStationListForOther();
     } else if (index == '3') {
       that.setData({
         select: 'fujin',
-      })
+      });
+      console.log("getLocationData start");
+      that.getLocationData();
     }
-    that.getStationListForOther();
   },
 
   //获取站点列表(附近/最近查询/收藏)
@@ -120,21 +109,7 @@ Page({
    var url = null;
    var data = null;
 
-   if (self.data.select == 'fujin') {
-
-     wx.getLocation({
-       success: function (res) {
-         console.log(res)
-         data = {
-           "requestInfo": {
-             "lon": res.longitude,
-             "lat": res.latitude
-           }
-         }
-       }
-     }),
-     url = api.getNearbyStation();
-   } else if (self.data.select == 'zuijin') {
+   if (self.data.select == 'zuijin') {
      url = api.getSelectHistory();
      data = {
        "requestInfo": {
@@ -142,10 +117,29 @@ Page({
        }
      };
    } else if (self.data.select == 'shoucang') {
-     url = api.getSelectHistory();
+     url = api.getSelectHistory();//TODO
      data = {
        "requestInfo": {
          "openid": app.globalData.openid
+       }
+     };
+   } else if (self.data.select == 'fujin') {
+     console.log(self.data.hasLocation);
+     if(self.data.hasLocation == false) {
+       // 经纬度取不到的时候，终止POST
+       console.log("self.data.hasLocation is false");
+       self.setData({
+         getStationForOtherResult: false,
+         stationList: [],
+         displFlg: true
+       });
+       return;
+     }
+     url = api.getNearbyStation();
+     data = {
+       "requestInfo": {
+         "longitude": self.data.longitude,
+         "latitude": self.data.latitude
        }
      };
    }
@@ -164,7 +158,7 @@ Page({
            self.setData({
              getStationForOtherResult: false,
              stationList: [],
-             displFlg: ture
+             //displFlg: true
            });
          }
        } else {
@@ -172,17 +166,17 @@ Page({
          self.setData({
            getStationForOtherResult: false,
            stationList: [],
-           displFlg: ture
+           //displFlg: true
          });
        }
      })
   },
+  //getStationListForOther END
 
   //返回选中的站
   returnItemValue: function(e) {
-
-    console.log(e);
     const that = this;
+
     if (that.data.startEndTrainFlg) {
       getApp().globalData.startTrainCode = e.currentTarget.dataset.code;
       getApp().globalData.startTrainEn = e.currentTarget.dataset.en;
@@ -199,98 +193,30 @@ Page({
     });
   },
 
-  //监听时间picker选择器
-  listenerPickerSelected: function (e) {
-    //改变index值，通过setData()方法重绘界面
-    this.setData({
-      eventKbn_index: e.detail.value
-    });
-  }, 
-
-  showDelete: function (e) {
-    console.log("======showDelete Event======");
-    console.log(e);
-  },
-
-  //左滑刪除操作START
-  //手指刚放到屏幕触发
-  touchS: function (e) {
-    console.log("touchS" + e);
-    //判断是否只有一个触摸点
-    if (e.touches.length == 1) {
-      this.setData({
-        //记录触摸起始位置的X坐标
-        startX: e.touches[0].clientX
-      });
-    }
-  },
-  //触摸时触发，手指在屏幕上每移动一次，触发一次
-  touchM: function (e) {
-    console.log("touchM:" + e);
-    var that = this
-    if (e.touches.length == 1) {
-      //记录触摸点位置的X坐标
-      var moveX = e.touches[0].clientX;
-      //计算手指起始点的X坐标与当前触摸点的X坐标的差值
-      var disX = that.data.startX - moveX;
-      //delBtnWidth 为右侧按钮区域的宽度
-      var delBtnWidth = that.data.delBtnWidth;
-      var txtStyle = "";
-      if (disX == 0 || disX < 0) {//如果移动距离小于等于0，文本层位置不变
-        txtStyle = "left:0px";
-      } else if (disX > 0) {//移动距离大于0，文本层left值等于手指移动距离
-        txtStyle = "left:-" + disX + "px";
-        if (disX >= delBtnWidth) {
-          //控制手指移动距离最大值为删除按钮的宽度
-          txtStyle = "left:-" + delBtnWidth + "px";
-        }
-      }
-      //获取手指触摸的是哪一个item
-      var index = e.currentTarget.dataset.index;
-      var list = that.data.stationList;
-      //将拼接好的样式设置到当前item中
-      list[index].txtStyle = txtStyle;
-      //更新列表的状态
-      this.setData({
-        stationList: list
-      });
-    }
-  },
-  touchE: function (e) {
-    console.log("touchE" + e);
-    var that = this
-    if (e.changedTouches.length == 1) {
-      //手指移动结束后触摸点位置的X坐标
-      var endX = e.changedTouches[0].clientX;
-      //触摸开始与结束，手指移动的距离
-      var disX = that.data.startX - endX;
-      var delBtnWidth = that.data.delBtnWidth;
-      //如果距离小于删除按钮的1/2，不显示删除按钮
-      var txtStyle = disX > delBtnWidth / 2 ? "left:-" + delBtnWidth + "px" : "left:0px";
-      //获取手指触摸的是哪一项
-      var index = e.currentTarget.dataset.index;
-      var list = that.data.stationList;
-      list[index].txtStyle = txtStyle;
-      //更新列表的状态
-      that.setData({
-        stationList: list
-      });
-    }
-  },
-  //左滑刪除操作END
-
-//取得当前经纬度
-  getLocation: function () {
+  getLocationData: function(e) {
     var that = this
     wx.getLocation({
       success: function (res) {
-        console.log(res)
+        // success
+        console.log(res);
         that.setData({
           hasLocation: true,
-          location: formatLocation(res.longitude, res.latitude)
-        })
+          longitude: res.longitude,
+          latitude: res.latitude
+        });
+        that.getStationListForOther(e);
+      },
+      fail: function () {
+        // fail
+        hasLocation: false
+      },
+      complete: function () {
+        // complete
+        hasLocation: false
       }
     })
-  },
+  }
+  // getLocationData END
+
 })
 

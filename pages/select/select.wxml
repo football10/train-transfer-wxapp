@@ -37,7 +37,7 @@
       </block>
     </view>
     <view wx:else style="margin:20rpx">
-      还没有查询到站点信息...
+      没有匹配到相应的站点信息...
     </view>
   </view>
   <!--附近/最近查询/收藏站点的LIST-->
@@ -59,7 +59,13 @@
       </block>
     </view>
     <view wx:else style="margin:20rpx">
-      没有可以显示的站点信息...
+      <view wx:if="{{select == 'fujin'}}=">
+        找不到附近的站点信息...<br/>
+        你在哪里啊？？？
+      </view>
+      <view wx:else>
+        没有可以显示的站点信息...
+      </view>
     </view>
   </view>
 </view>
