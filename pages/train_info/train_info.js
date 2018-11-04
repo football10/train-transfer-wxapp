@@ -1,7 +1,7 @@
 Page({
   data: {
-    latitude: 23.099994,
-    longitude: 113.324520,
+    latitude: '',
+    longitude: '',
     markers: [{
       id: 1,
       latitude: 23.099994,
@@ -9,6 +9,13 @@ Page({
       name: 'T.I.T 创意园'
     }]
   },
+  onLoad: function(options) {
+    this.setData({
+      latitude:options.lat,
+      longitude:options.lon
+    });
+  },
+
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap')
   },

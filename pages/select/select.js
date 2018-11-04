@@ -6,6 +6,7 @@ Page({
   data: {
     displFlg: false,
     select: '',
+    isFujin: false,
     startEndTrainFlg: true,
     getStationForNameResult: false,
     stationListForSelectName: [],
@@ -31,7 +32,8 @@ Page({
       });
     }
     this.setData({
-      select: 'zuijin'
+      select: 'zuijin',
+      isFujin: false
     });
 
     this.getStationListForOther();
@@ -87,16 +89,19 @@ Page({
     if (index == '1') {
       that.setData({
         select: 'zuijin',
+        isFujin: false
       });
       that.getStationListForOther();
     } else if (index == '2') {
       that.setData({
         select: 'shoucang',
+        isFujin: false
       });
       that.getStationListForOther();
     } else if (index == '3') {
       that.setData({
         select: 'fujin',
+        isFujin: true
       });
       console.log("getLocationData start");
       that.getLocationData();
@@ -196,6 +201,7 @@ Page({
   getLocationData: function(e) {
     var that = this
     wx.getLocation({
+      type:'gcj02',
       success: function (res) {
         // success
         console.log(res);
