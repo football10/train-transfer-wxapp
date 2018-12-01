@@ -41,15 +41,15 @@ left:127rpx;
 }
 
 .img_you {
-  height: 30rpx;
-  width: 30rpx;
+  height: 20rpx;
+  width: 20rpx;
   margin-left: 20rpx;
   margin-right: 10rpx;
 }
 
 .img_jiantou {
-  height: 30rpx;
-  width: 30rpx;
+  height: 20rpx;
+  width: 20rpx;
   margin-left: 50rpx;
 }
 
@@ -69,4 +69,50 @@ left:127rpx;
   display: flex;
   flex-direction: column;
   width: 130rpx;
+}
+
+.page__hd_result_detail{
+  padding : 10px 20px;
+  background-color: white;
+  flex-wrap: wrap;
+}
+
+.page__bd_result_detail {
+  padding : 10px 20px;
+  background-color: white;
+  flex-wrap: wrap;
+}
+
+
+
+.cell_result_detail {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+
+weui-cell{padding:10px 15px;position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center}
+
+.key_station {
+  background-color: orange;
+  padding:7px 15px;
+  color: white;
+}
+
+.result_detail_left{
+  width: 120rpx;
+  font-size: 14px;
+}
+
+.result_detail_right{
+  padding : 5px 5px;
+  font-size: 13px;
+  border-left: 10rpx solid #09bb07;
+}
+
+.result_detail_tenkai{
+  display: flex;
+  flex-direction: column;
 }

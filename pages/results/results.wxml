@@ -1,3 +1,44 @@
+<import src="../template/template.wxml"/>
+<view class="page">
+
+    <view class="page__hd_result">
+      起点 → 终点
+    </view>
+
+    <view class="page__bd">
+      <view class="weui-cells weui-cells_after-title">
+          <navigator url="../result_det/result_det" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd">1</view>
+              <view class="weui-cell__bd">
+                  <view style="line-hight:25rpx;font-size:25rpx">总共<text class="result-content_no">1</text>站/换乘<text class="result-content_no">1</text>次</view>
+                  <view style="align-items: center;display: flex;">起点 - <image class="station-icon-small" src="/image/y.png"/> - 终点</view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="../result_det/result_det" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd">2</view>
+              <view class="weui-cell__bd">
+                  <view style="line-hight:25rpx;font-size:25rpx">总共<text class="result-content_no">2</text>站/换乘<text class="result-content_no">2</text>次</view>
+                  <view style="align-items: center;display: flex;">起点 - <image class="station-icon-small" src="/image/c.png"/> - 东京 - <image class="station-icon-small" src="/image/i.png"/> - 终点</view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="../result_det/result_det" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd">3</view>
+              <view class="weui-cell__bd">
+                  <view style="line-hight:25rpx;font-size:25rpx">总共<text class="result-content_no">3</text>站/换乘<text class="result-content_no">3</text>次</view>
+                  <view class="result_detail">起点 -<image class="station-icon-small" src="/image/f.png"/>- 东京迪士尼 -<image class="station-icon-small" src="/image/t.png"/>- 马食横町-<image class="station-icon-small" src="/image/z.png"/>- 终点</view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+      </view>
+    </view>
+
+    <template is="footer"></template>
+</view>
+
+
+<!--
 <view class='result_info'>
   <view class='info'>
     大沼公園
@@ -76,3 +117,4 @@
     </view>
   </view>
 </view>
+-->

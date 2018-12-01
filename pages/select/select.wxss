@@ -1,114 +1,13 @@
-.selectBox{
-  display: flex;
-  padding-top: 30rpx;
-  padding-left: 10rpx;
-  padding-right: 10rpx;
-   padding-bottom: 10rpx;
-  background: white;
-
+.page__bd{
+    padding-bottom: 0;
 }
-
-.selectBox_txt{
-  height: 80rpx;
-  background: white;
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
 }
-
-.select_icon{
-  height: 80rpx;
-  width: 80rpx;
+.searchbar-result:before{
+    display: none;
 }
-
-.select_picker{
-  width: 150rpx;
-  vertical-align: middle;
-  text-align:center;
-  font-size: 30rpx;
-  line-height: 80rpx;
-  color:  white;
-  background: orange;
-  border-radius:10rpx;
-}
-
-.btns {
-  display: flex;
-  height: 90rpx;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items: center;
-}
-
-.btns .nav_btn {
-  flex-shrink: 0;
-  flex: 1;
-  height: 90rpx;
-  line-height: 90rpx;
-  text-align: center;
-  background-color: #fff;
-  color: #333333;
-  font-size: 34rpx;
-  border-bottom: 4rpx solid #ffffff;
-}
-
-.btns .nav_btn.selected {
-border-bottom: 4rpx solid #36b9af;
-  color: #36b9af;
-}
-
-.select_body{
- width: 100%;
- padding-left: 20rpx;
- padding-right: 20rpx;
- margin-bottom: 10rpx;
- border-bottom: 1rpx solid  gainsboro;
- display: flex;
- flex-direction: row;
- align-items:flex-end;
-}
-
-.select_body .leftItem{
-  width: 40%;
-}
-
-.select_body .en{
-  font-size: 30rpx;
-  margin-top: 20rpx;
-  color: darkgray;
-}
-.select_body .jpname{
-  margin-bottom: 20rpx;
-}
-.select_body .cnname{
-  margin-bottom: 20rpx;
-}
-.select_heard1{
-  width: 90%;
-  padding-top: 130rpx;
-  padding-bottom: 20rpx;
-}
-
-.select_heard2{
-  width: 90%;
-  padding-top: 220rpx;
-  padding-bottom: 20rpx;
-}
-
-.round-click{
-    height: 90rpx;
-    width: 90rpx;
-    background-color: #36b9af;
-    border-radius: 100%;
-    position: fixed;
-    bottom: 100rpx;
-    right: 20rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9;
-    box-shadow: 1px 1px 8px #888888;
-}
-.round-click navigator{
-    font-size: 28rpx;
-    max-width: 80rpx;
-    color: #fff;
-    text-align: center;
+.weui-cell{
+    padding: 10px 15px 10px 25px;
 }

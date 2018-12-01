@@ -1,3 +1,62 @@
+<import src="../template/template.wxml"/>
+<view class="page">
+    <!--
+    <view class="page__hd">
+      <view class="page__title">Main Page</view>
+      <view class="page__desc">主页</view>
+    </view>
+    -->
+
+    <view class="page__bd">
+      <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">起 点</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请选择出发地" type="text" value="{{startTrainCn}}{{startTrainCode}}" bindfocus="startTrain" autofocus/>
+                </view>
+            </view>
+      </view>
+      <view class="bianhuan">
+        <image class="img_bianhuan" src="/image/bianhuan.png" bindtap='convertTrain'></image>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">终 点</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请选择目的地" type="text" value="{{endTrainCn}}{{endTrainCode}}" bindfocus="endTrain" autofocus/>
+                </view>
+            </view>
+      </view>   
+    </view>
+
+    <view class="page__bd page__bd_spacing">
+      <button class="weui-btn" type="primary" bindtap="join" data-start="{{startTrainCn}}" data-end="{{endTrainCn}}">查 询</button>
+    </view>
+
+    <view class="page__bd">
+        <view class="weui-grids">
+            <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="/image/fujinzhandian.png" />
+                  <view class="weui-grid__label">附近站点</view>
+            </navigator>
+            <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="/image/xianluchaxun.png" />
+                  <view class="weui-grid__label">线路查询</view>
+            </navigator>
+            <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="/image/share.png" />
+                  <view class="weui-grid__label">分享给好友</view>
+            </navigator>
+        </view>
+    </view>
+
+    <template is="footer"></template>
+</view>
+<!--
 <view class="container bg">
   <view sub_container="">
     <view class="textTrain">
@@ -38,3 +97,4 @@
     </view>
   </view>
 </view>
+-->

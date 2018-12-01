@@ -10,7 +10,7 @@
     "navigationBarTextStyle": "#fff",
     "navigationBarTitleText": "东京地铁",
     "navigationBarBackgroundColor": "#5dc890",
-    "backgroundColor": "#fbf9fe",
+    "backgroundColor": "#F8F8F8",
     "enablePullDownRefresh": false
   },
   "networkTimeout": {

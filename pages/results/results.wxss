@@ -35,7 +35,7 @@
   margin-left: 20rpx;
   margin-right: 20rpx;
   flex-shrink: 0;
-    margin-bottom: 10rpx;
+  margin-bottom: 10rpx;
 }
 
 .result .result_right {
@@ -70,6 +70,34 @@
   margin-right: 10rpx;
   height: 1px;
   border: none;
-  border-top: 1px dotted darkgrey;
-  width: 30rpx;
+  border-top: 1px black;
+  width: 10rpx;
+}
+
+.weui-cell {
+  padding: 7px 20px 7px 0px;
+}
+.weui-cell__hd {
+  text-align: center;
+  width: 15%;
+  font-size: 80rpx;
+}
+.result-content_no {
+  color: orange;
+  font-size: 25rpx;
+}
+
+.result_detail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-shrink: 1;
+}
+
+.page__hd_result{
+  padding : 10px 20px;
+  background-color: orange;
+  color: white;
+  flex-wrap: wrap;
 }

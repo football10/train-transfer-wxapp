@@ -1,56 +1,75 @@
-<view class='resultDet'>
-  <view class='resultDet_info'>
-    起点：大沼公園
-  </view>
-</view>
-<view class='tran_det'>
-  <view class='tran_icon'>
-    <image class="img_jiantou" src="{{show_tran1 ? '/image/shang.png': '/image/xia.png'}}"></image>
-    <view class='tran_count' bindtap='show_tran1'>3站</view>
-    <image class="img_jiantou" src="{{show_tran1 ? '/image/xia.png': '/image/shang.png'}}"></image>
-  </view>
-  <view class='tran_xianlu'>
-    <image class="img_you" src="/image/z.png"></image>半蔵門線
-  </view>
-</view>
-<view class='tran_det2' style="{{show_tran1 ? 'display: none': ''}}">
-  <navigator url='../train_info/train_info' class='tran_name'>
-    <image class="img_tran" src="/image/mark_maru.png"></image>
-    東大島</navigator>
-  <navigator url='../train_info/train_info' class='tran_name'>
-    <image class="img_tran" src="/image/mark_maru.png"></image>
-    大島</navigator>
-</view>
-<view class='resultDet'>
-  <view class='resultDet_info'>
-    换乘：住吉
-  </view>
-</view>
-<view class='tran_det'>
-  <view class='tran_icon'>
-    <image class="img_jiantou" src="{{show_tran2 ? '/image/shang.png': '/image/xia.png'}}"></image>
-    <view class='tran_count' bindtap='show_tran2'>5站</view>
-    <image class="img_jiantou" src="{{show_tran2 ? '/image/xia.png': '/image/shang.png'}}"></image>
-  </view>
-  <view class='tran_xianlu'>
-    <image class="img_you" src="/image/y.png"></image>都営新宿線線
-  </view>
-</view>
-<view class='tran_det2' style="{{show_tran2 ? 'display: none': ''}}">
-  <navigator url='../train_info/train_info' class='tran_name'>
-    <image class="img_tran" src="/image/mark_maru.png"></image>菊川</navigator>
-  <navigator url='../train_info/train_info' class='tran_name'>
-    <image class="img_tran" src="/image/mark_maru.png"></image>森下</navigator>
-  <navigator url='../train_info/train_info' class='tran_name'>
-    <image class="img_tran" src="/image/mark_maru.png"></image>浜町</navigator>
-  <navigator url='../train_info/train_info' class='tran_name'>
-    <image class="img_tran" src="/image/mark_maru.png"></image>馬喰横山</navigator>
-</view>
-<view class='resultDet'>
-  <view class='resultDet_info'>
-    终点：銚子口
-  </view>
-</view>
-<view class='section'>
-  <button class="" type="primary" open-type="share"> 转发</button>
+<import src="../template/template.wxml"/>
+<view class="page">
+    <view class="page__hd_result_detail">
+      总共<text style="color:orange;">1</text>站/换乘<text style="color:orange;">1</text>次
+    </view>
+
+    <view class="page__bd">
+      
+      <view class="weui-cells weui-cells_after-title">
+            <view class="cell_result_detail key_station">
+                <view class="weui-cell__bd">起点：XXX</view>
+            </view>
+            <view class=" cell_result_detail">
+                <view class="result_detail_left result_detail_tenkai">
+                      <image class="img_jiantou" src="{{show_tran1 ? '/image/shang2.png': '/image/xia2.png'}}"/>
+                      <view class='tran_count' bindtap='show_tran1'>3站</view>
+                      <image class="img_jiantou" src="{{show_tran1 ? '/image/xia2.png': '/image/shang2.png'}}"/>
+                </view>
+                <view class="result_detail_right" style="align-items: center;display: flex;"><image class="station-icon-small" src="/image/z.png"></image>半藏门线</view>
+            </view>
+            <view class="cell_result_detail" hidden="{{show_tran1}}">
+                <view class="result_detail_left"></view>
+                <view class="result_detail_right">站点1</view>
+            </view>
+            <view class="cell_result_detail" hidden="{{show_tran1}}">
+                <view class="result_detail_left"></view>
+                <view class="result_detail_right">站点2</view>
+            </view>
+            <view class="cell_result_detail" hidden="{{show_tran1}}">
+                <view class="result_detail_left"></view>
+                <view class="result_detail_right">站点3</view>
+            </view>
+            <view class="weui-cell cell_result_detail key_station">
+                <view class="weui-cell__bd">换乘：住吉</view>
+            </view>
+            <view class=" cell_result_detail">
+                <view class="result_detail_left result_detail_tenkai">
+                      <image class="img_jiantou" src="{{show_tran2 ? '/image/shang2.png': '/image/xia2.png'}}"/>
+                      <view class='tran_count' bindtap='show_tran2'>5站</view>
+                      <image class="img_jiantou" src="{{show_tran2 ? '/image/xia2.png': '/image/shang2.png'}}"/>
+                </view>
+                <view class="result_detail_right" style="align-items: center;display: flex;"><image class="station-icon-small" src="/image/y.png"></image>都营新宿线</view>
+            </view>
+            <view class="cell_result_detail" hidden="{{show_tran2}}">
+                <view class="result_detail_left"></view>
+                <view class="result_detail_right">站点1</view>
+            </view>
+            <view class="cell_result_detail" hidden="{{show_tran2}}">
+                <view class="result_detail_left"></view>
+                <view class="result_detail_right">站点2</view>
+            </view>
+            <view class="cell_result_detail" hidden="{{show_tran2}}">
+                <view class="result_detail_left"></view>
+                <view class="result_detail_right">站点3</view>
+            </view>
+            <view class="cell_result_detail" hidden="{{show_tran2}}">
+                <view class="result_detail_left"></view>
+                <view class="result_detail_right">站点4</view>
+            </view>
+            <view class="cell_result_detail" hidden="{{show_tran2}}">
+                <view class="result_detail_left"></view>
+                <view class="result_detail_right">站点5</view>
+            </view>
+            <view class="weui-cell cell_result_detail key_station">
+                <view class="weui-cell__bd">终点：XXX</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="page__bd page__bd_spacing">
+      <button class="weui-btn" type="primary" open-type="share">转 发</button>
+    </view>
+
+    <template is="footer"></template>
 </view>

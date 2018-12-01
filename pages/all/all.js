@@ -51,15 +51,31 @@ Page({
     })
   },
   convertTrain: function () {
-    var that = this
+    var that = this;
     var converTrainCn = that.data.startTrainCn
     that.setData({
       startTrainCn: that.data.endTrainCn,
       endTrainCn: converTrainCn
     })
   },
-  join: function () {
-    var that = this
+  join: function (e) {
+    var that = this;
+    var startStation = e.currentTarget.dataset.start;
+    var endStation = e.currentTarget.dataset.end;
+    /** 
+    if(startStation == "" || endStation == "") {
+      wx.showModal({
+        content: '请选择出发地！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+          }
+        }
+      });
+      return;
+    }
+    */
     that.postRegSelectHistory();
 
     wx.navigateTo({

@@ -35,7 +35,8 @@
 }
 
 .bianhuan {
-  padding-top: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -62,4 +63,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.weui-label {
+  text-align:center;
+  height:2.58823529em;
+  min-height:2.58823529em;
+  line-height:2.58823529em;
+  background-color: #09bb07;
+  color: #fff;
+}
+
+.weui-cell{
+  padding:0px 0px;
+}
+
+.weui-input {
+  padding-left:10px;
+}
+
+.weui-grids {
+  border:0rpx;
+}
+
+.weui-grid {
+  padding: 10px 10px;
+  border:0rpx;
 }

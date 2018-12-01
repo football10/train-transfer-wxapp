@@ -2,184 +2,218 @@ import api from '../../utils/api'
 import wxRequest from '../../es6-promise/utils/wxRequest'
 var app = getApp();
 
+var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
+
 Page({
   data: {
-    displFlg: false,
-    select: '',
-    isFujin: false,
+    inputShowed: false,
+    inputVal: "",
+    inputValBefore: "",
+    tabs: ["最近查询", "收藏站点", "附近站点"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0,
+
     startEndTrainFlg: true,
-    getStationForNameResult: false,
-    stationListForSelectName: [],
-    getStationForOtherResult: false,
-    stationList: [],
     placeholder: '请输入目的地',
-    eventKbn: ['中文查询', '日文查询'],
-    eventKbn_index: 0,
+    stationList: [],
+    stationListForSelectName: [],
     hasLocation: false,
     longitude: 0.0,
-    latitude: 0.0
+    latitude: 0.0,
+
+    delBtnWidth: 180//删除按钮宽度单位（rpx）
   },
-  onLoad: function(option) {
-    console.log("onload" + option.placeholder);
-    if (option.placeholder == 'startTrain') {
-      this.setData({
+  onLoad: function (options) {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
+    if (options.placeholder == 'startTrain') {
+      that.setData({
         placeholder: '请输入出发地',
       });
     } else {
-      this.setData({
+      that.setData({
         placeholder: '请输入目的地',
         startEndTrainFlg: false
       });
     }
+    that.getStationListForOther();
+  },
+  onShow: function () {
+    // 页面显示
+  },
+  onReady: function () {
+    // 页面渲染完成（只触发一次）
+  },
+  showInput: function () {
     this.setData({
-      select: 'zuijin',
-      isFujin: false
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputValBefore: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: "",
+      inputValBefore: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+    var self = this;
+    if (self.data.inputVal != self.data.inputValBefore && self.data.inputVal.length > 0) {
+      var url = api.getStationNameList();
+      var data = {
+        "requestInfo": {
+          "stationLikeName": self.data.inputVal
+        }
+      };
+      wxRequest
+        .postRequest(url, data)
+        .then(response => {
+          if ("OK" == response.data.responseCode) {
+            if (response.data.result.stationCount != 0) {
+              self.setData({
+                stationListForSelectName: response.data.result.stationList
+              });
+            } else {
+              self.setData({
+                stationListForSelectName: []
+              });
+            }
+          } else {
+            self.setData({
+              stationListForSelectName: []
+            });
+          }
+        });
+    }
+    this.setData({
+      inputValBefore: e.detail.value
+    });
+  },
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
     });
 
-    this.getStationListForOther();
+    const index = e.currentTarget.id;
+    if (index == 0) {
+      this.getStationListForOther();
+    } else if (index == 1) {
+      this.getStationListForOther();
+    } else if (index == 2) {
+      this.getLocationData();
+    }
   },
 
-  selectEvent: function(e) {
-
-    var value = e.detail.value
-    var self = this
-    if (value.length == 0) {
-      this.setData({
-        displFlg: false,
-      });
-      return;
-    }
-
+  //获取站点列表(附近/最近查询/收藏)
+  getStationListForOther() {
+    const self = this;
     var url = null;
-    var data = {
-      "requestInfo": {
-        "stationLikeName": value
-      }
-    }
+    var data = null;
 
-    url = api.getStationNameList();
+    if (self.data.activeIndex == 0) {
+      url = api.getSelectHistory();
+      data = {
+        "requestInfo": {
+          "openid": app.globalData.openid
+        }
+      };
+    } else if (self.data.activeIndex == 1) {
+      url = api.getCollectionStation();
+      data = {
+        "requestInfo": {
+          "openid": app.globalData.openid
+        }
+      };
+    } else if (self.data.activeIndex == 2) {
+      console.log(self.data.hasLocation);
+      if (self.data.hasLocation == false) {
+        self.setData({
+          stationList: []
+        });
+        return;
+      }
+      url = api.getNearbyStation();
+      data = {
+        "requestInfo": {
+          "longitude": self.data.longitude,
+          "latitude": self.data.latitude
+        }
+      };
+    }
     wxRequest
       .postRequest(url, data)
       .then(response => {
         if ("OK" == response.data.responseCode) {
           if (response.data.result.stationCount != 0) {
             self.setData({
-              stationListForSelectName: response.data.result.stationList,
-              displFlg: true,
-              getStationForNameResult: true
+              stationList: response.data.result.stationList
             });
           } else {
             self.setData({
-              getStationForNameResult: false,
-              displFlg: true,
+              stationList: []
             });
           }
         } else {
+          // Request NG
           self.setData({
-            displFlg: false
+            stationList: []
           });
         }
-      })
-  },
-
-  //切换导航按钮
-  navbtn(event) {
-    const index = event.currentTarget.dataset.id;
-    const that = this;
-    if (index == '1') {
-      that.setData({
-        select: 'zuijin',
-        isFujin: false
       });
-      that.getStationListForOther();
-    } else if (index == '2') {
-      that.setData({
-        select: 'shoucang',
-        isFujin: false
-      });
-      that.getStationListForOther();
-    } else if (index == '3') {
-      that.setData({
-        select: 'fujin',
-        isFujin: true
-      });
-      console.log("getLocationData start");
-      that.getLocationData();
-    }
-  },
-
-  //获取站点列表(附近/最近查询/收藏)
-  getStationListForOther() {
-   const self = this;
-   var url = null;
-   var data = null;
-
-   if (self.data.select == 'zuijin') {
-     url = api.getSelectHistory();
-     data = {
-       "requestInfo": {
-         "openid": app.globalData.openid
-       }
-     };
-   } else if (self.data.select == 'shoucang') {
-     url = api.getSelectHistory();//TODO
-     data = {
-       "requestInfo": {
-         "openid": app.globalData.openid
-       }
-     };
-   } else if (self.data.select == 'fujin') {
-     console.log(self.data.hasLocation);
-     if(self.data.hasLocation == false) {
-       // 经纬度取不到的时候，终止POST
-       console.log("self.data.hasLocation is false");
-       self.setData({
-         getStationForOtherResult: false,
-         stationList: [],
-         displFlg: true
-       });
-       return;
-     }
-     url = api.getNearbyStation();
-     data = {
-       "requestInfo": {
-         "longitude": self.data.longitude,
-         "latitude": self.data.latitude
-       }
-     };
-   }
-   
-   wxRequest
-     .postRequest(url, data)
-     .then(response => {
-       if ("OK" == response.data.responseCode) { 
-         if (response.data.result.stationCount != 0) {
-           self.setData({
-             stationList: response.data.result.stationList,
-             getStationForOtherResult: true,
-             displFlg: false
-           });
-         } else {
-           self.setData({
-             getStationForOtherResult: false,
-             stationList: [],
-             //displFlg: true
-           });
-         }
-       } else {
-         // Request NG
-         self.setData({
-           getStationForOtherResult: false,
-           stationList: [],
-           //displFlg: true
-         });
-       }
-     })
   },
   //getStationListForOther END
 
-  //返回选中的站
-  returnItemValue: function(e) {
+  getLocationData: function (e) {
+    var that = this
+    wx.showToast({
+      title: '数据加载中',
+      icon: 'loading',
+      duration: 500
+    });
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        // success
+        console.log(res);
+        that.setData({
+          hasLocation: true,
+          longitude: res.longitude,
+          latitude: res.latitude
+        });
+        that.getStationListForOther(e);
+        wx.hideToast();
+      },
+      fail: function () {
+        // fail
+        hasLocation: false
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+  // getLocationData END
+
+  // 返回选中的站点
+  clickItem: function (e) {
     const that = this;
 
     if (that.data.startEndTrainFlg) {
@@ -198,31 +232,4 @@ Page({
     });
   },
 
-  getLocationData: function(e) {
-    var that = this
-    wx.getLocation({
-      type:'gcj02',
-      success: function (res) {
-        // success
-        console.log(res);
-        that.setData({
-          hasLocation: true,
-          longitude: res.longitude,
-          latitude: res.latitude
-        });
-        that.getStationListForOther(e);
-      },
-      fail: function () {
-        // fail
-        hasLocation: false
-      },
-      complete: function () {
-        // complete
-        hasLocation: false
-      }
-    })
-  }
-  // getLocationData END
-
-})
-
+});
